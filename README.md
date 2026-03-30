@@ -24,7 +24,7 @@ Steps:
 Your game folder should look like this:
 
 ```
-Football Manager 26/
+Football Manager 26\Content\
   fm26.exe
   GameAssembly.dll
   XGameRuntime.dll          <- ours (proxy)
