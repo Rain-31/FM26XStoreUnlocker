@@ -6,6 +6,9 @@
 #include "config.h"
 #include "logger.h"
 
+// Forward declaration for IL2CPP hook initialization
+DWORD WINAPI InitializeIL2CPPHook(LPVOID);
+
 #include <string>
 #include <cstdio>
 #include <Windows.h>
@@ -140,6 +143,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
         StoreHooks::Initialize(g_config);
         PackageHooks::Initialize(g_config);
         ComServerHooks::Initialize(g_config);
+
+        // Start IL2CPP Hook thread to wait for GameAssembly.dll
+        CreateThread(nullptr, 0, InitializeIL2CPPHook, nullptr, 0, nullptr);
 
         LOG_INFO("Ready. Real DLL loads on first API call.");
         break;

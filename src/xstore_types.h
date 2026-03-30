@@ -17,7 +17,7 @@ struct XStoreCanAcquireLicenseResult {
     char     licensableSku[8];
     uint32_t status;            // 0 = licensable
 };
-static_assert(sizeof(XStoreCanAcquireLicenseResult) == 12);
+static_assert(sizeof(XStoreCanAcquireLicenseResult) == 12, "size mismatch");
 
 struct XStoreGameLicense {
     char     skuStoreId[STORE_SKU_ID_SIZE];
@@ -31,7 +31,7 @@ struct XStoreGameLicense {
     uint8_t  _pad1[4];
     int64_t  expirationDate;
 };
-static_assert(sizeof(XStoreGameLicense) == 104);
+static_assert(sizeof(XStoreGameLicense) == 104, "size mismatch");
 
 struct XStoreAddonLicense {
     char     skuStoreId[STORE_SKU_ID_SIZE];
@@ -40,7 +40,7 @@ struct XStoreAddonLicense {
     uint8_t  _pad0[5];
     int64_t  expirationDate;
 };
-static_assert(sizeof(XStoreAddonLicense) == 96);
+static_assert(sizeof(XStoreAddonLicense) == 96, "size mismatch");
 
 typedef int64_t(__fastcall* VtableEntry_t)(void*, ...);
 
@@ -164,7 +164,7 @@ struct XVersion {
         uint64_t Value;
     };
 };
-static_assert(sizeof(XVersion) == 8);
+static_assert(sizeof(XVersion) == 8, "size mismatch");
 
 struct XPackageDetails {
     const char* packageIdentifier;
@@ -183,7 +183,7 @@ struct XPackageDetails {
     uint8_t     _pad1[3];
     const char* titleID;
 };
-static_assert(sizeof(XPackageDetails) == 80);
+static_assert(sizeof(XPackageDetails) == 80, "size mismatch");
 
 namespace PackageVtable {
     // IUnknown

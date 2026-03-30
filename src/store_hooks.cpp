@@ -1069,7 +1069,7 @@ struct XPackageInstallationProgress {
     bool launchable, completed;
     uint8_t _pad[6];
 };
-static_assert(sizeof(XPackageInstallationProgress) == 32);
+static_assert(sizeof(XPackageInstallationProgress) == 32, "size mismatch");
 
 static void __fastcall Hook_GetInstallationProgress(void* self, void* monitor, void* progress) {
     if (g_pkgShutdown) { ((GetProgressFn_t)g_pkgOrig[PackageVtable::GetInstallationProgress])(self, monitor, progress); return; }
