@@ -94,7 +94,8 @@ DWORD WINAPI InitializeIL2CPPHook(LPVOID lpParam) {
 
     std::this_thread::sleep_for(std::chrono::seconds(5));
 
-    uintptr_t targetRVA = 0x7952D0;
+    // Update to correct RVA for MakePurchaseHandlerModule.<Init>b__26_1 (EventFromPlugin evt)
+    uintptr_t targetRVA = 0x7A41E0;
     g_targetFuncAddr = (uintptr_t)hGameAssembly + targetRVA;
     
     LOG_INFO("[IL2CPP Hook] Target function address: %p", (void*)g_targetFuncAddr);
